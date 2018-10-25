@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title><?php echo e(config('app.name', 'Vintage')); ?></title>
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
@@ -18,14 +18,51 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+
+    <style>
+    .navbar {
+		-webkit-box-shadow: 0 8px 6px -6px #999;
+		-moz-box-shadow: 0 8px 6px -6px #999;
+		box-shadow: 0 8px 6px -6px #999;
+    }
+
+    .sidenav{
+      font-family: "Courier New", Courier, monospace;
+      width: 100px;
+    }
+
+    th{
+      color: #808080;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 200px;
+    }
+
+    li a {
+      display: block;
+      color: #124;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    /* Change the link color on hover */
+    li a:hover {
+      background-color: #555;
+      color: white;
+    }
+    </style>
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                    <?php echo e(config('app.name', 'Laravel')); ?>
-
+                    <img src="images/vintage.png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
@@ -78,5 +115,10 @@
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
+
+    
+    <footer class="footer font-medium pt-2">
+        <div class="footer-copyright text-center py-3">© 2018 Vintage - All rights reserved</div>
+    </footer>
 </body>
 </html>

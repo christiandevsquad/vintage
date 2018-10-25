@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Vintage') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,51 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-    .navbar {
-		-webkit-box-shadow: 0 8px 6px -6px #999;
-		-moz-box-shadow: 0 8px 6px -6px #999;
-		box-shadow: 0 8px 6px -6px #999;
-    }
-
-    .sidenav{
-      font-family: "Courier New", Courier, monospace;
-      width: 100px;
-    }
-
-    th{
-      color: #808080;
-    }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 200px;
-    }
-
-    li a {
-      display: block;
-      color: #124;
-      padding: 8px 16px;
-      text-decoration: none;
-    }
-
-    /* Change the link color on hover */
-    li a:hover {
-      background-color: #555;
-      color: white;
-    }
-    </style>
 </head>
-
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="images/vintage.png" alt="">
+                    {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -114,10 +76,5 @@
             @yield('content')
         </main>
     </div>
-
-    {{-- Added by Christian --}}
-    <footer class="footer font-medium pt-2">
-        <div class="footer-copyright text-center py-3">© 2018 Vintage - All rights reserved</div>
-    </footer>
 </body>
 </html>
