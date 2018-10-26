@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Product;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\Resource;
 
-class ProductCollection extends ResourceCollection
+class ProductCollection extends Resource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,16 @@ class ProductCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'subName' => $this->subName,
+            'price' => $this->price,
+            'description' => $this->description,
+            'image' => $this->image,
+            'tag' => $this->tag,
+            'href' => [
+                'link' => route('products.show', $this->id)
+            ]
+        ];
     }
 }

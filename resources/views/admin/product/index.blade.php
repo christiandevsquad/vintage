@@ -27,7 +27,5 @@
           </ul>
           <hr class="d-sm-none">
         </div>
-        </div>
-
     </div>
 @endsection
