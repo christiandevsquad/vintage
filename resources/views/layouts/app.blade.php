@@ -26,20 +26,40 @@
 		box-shadow: 0 8px 6px -6px #999;
     }
 
-    .sidenav{
-      font-family: "Courier New", Courier, monospace;
-      width: 100px;
+    .sidenav {
+        font-family: "Courier New", Courier, monospace;
+        position: fixed;
+        z-index: 1;
+        overflow-x: hidden;
+        padding: 8px 0;
     }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #000000;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #191970;
+    }
+    
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }    
 
     th{
       color: #808080;
     }
 
     ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 200px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
     }
 
     li a {
@@ -111,11 +131,30 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row" style="padding-top:20px;">
+                    <div class="col-2">
+                        <div class="sidenav">
+                            <h4 style="text-align:center">MENU</h4>
+                            <a href="#">Products</a>
+                            <a href="#">Orders</a>
+                            <a href="#">Customers</a>
+                            <a href="#">Analitycs</a>
+                            <a href="#">Discounts</a>
+                            <a href="#">Apps</a>
+                        </div>    
+                    </div>
+
+                    <div class="col-10">
+                        @yield('editable_content')
+                    </div>
+                </div>
+            
+                
+
         </main>
     </div>
 
-    {{-- Added by Christian --}}
     <footer class="footer font-medium pt-2">
         <div class="footer-copyright text-center py-3">© 2018 Vintage - All rights reserved</div>
     </footer>

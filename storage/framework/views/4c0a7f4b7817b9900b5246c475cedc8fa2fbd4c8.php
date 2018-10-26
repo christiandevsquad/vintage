@@ -38,7 +38,7 @@
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 20px;
-        color: #000000;
+        color: #000F00;
         display: block;
     }
 
@@ -156,6 +156,7 @@
         </main>
     </div>
 
+    
     <footer class="footer font-medium pt-2">
         <div class="footer-copyright text-center py-3">© 2018 Vintage - All rights reserved</div>
     </footer>

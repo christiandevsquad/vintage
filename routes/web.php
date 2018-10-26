@@ -11,12 +11,16 @@
 |
 */
 
+use App\Models\Product;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/p', function () {
-    return view('admin.product.index');
+Route::get('/index', function () {
+    $data = Product::all();
+
+    return view('admin.product.index')->withData($data);
 });
 
 Auth::routes();
