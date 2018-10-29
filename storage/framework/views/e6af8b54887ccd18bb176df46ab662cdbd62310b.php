@@ -18,13 +18,10 @@
     <table class="table table-hover" id="table" style="margin-top:20px;" >
         <thead>
             <tr>
-                <th class="text-center">#</th>
+                <th class="text-center">ID</th>
                 <th class="text-center">Product Name</th>
                 <th class="text-center">Sub Name</th>
                 <th class="text-center">Price</th>
-                <th class="text-center">Description</th>
-                <th class="text-center">Image</th>
-                <th class="text-center">Tag</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -35,12 +32,9 @@
                 <td style="text-align:center"><?php echo e($item->name); ?></td>
                 <td style="text-align:center"><?php echo e($item->subName); ?></td>
                 <td style="text-align:center"><?php echo e($item->price); ?></td>
-                <td style="text-align:center"><?php echo e(str_limit($item->description, 20)); ?></td>
-                <td style="text-align:center"><?php echo e(str_limit($item->image, 10)); ?></td>
-                <td style="text-align:center"><?php echo e($item->tag); ?></td>
-                <td style='white-space: nowrap'>
-                    <button class="edit-modal btn btn-success btn-xs">Edit</button>
-                    <button class="delete-modal btn btn-danger btn-xs">Delete</button>
+                <td style='text-align:center; white-space: nowrap'>
+                    <a href="<?php echo e(action('ProductController@edit', $item->id)); ?>" class="edit-modal btn btn-success btn-xs" role="button">Edit</button>
+                    <a href="<?php echo e(action('ProductController@destroy', $item->id)); ?>" class="delete-modal btn btn-danger btn-xs">Delete</button>
                 </td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -55,7 +49,7 @@
         $('#table').DataTable( {
             "pagingType": "full_numbers"
         } );
-} );
+    } );
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

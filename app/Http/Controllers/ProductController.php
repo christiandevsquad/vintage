@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -40,7 +40,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/', $name);
+        }
+
+        $product = new \App\Product;
+        $product->name = $request->get('name');
+        $product->subName = $request->get('subName');
+        $product->price = $request->get('price');
+        $product->description = $request->get('description');
+        $product->filename = $name;
+        $product->tag = $request->get('tag');
+        $product->save();
     }
 
     /**
@@ -60,9 +73,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = \App\Models\Product::find($id);
+        return view('admin.product.update_product',compact('product','id'));    
     }
 
     /**
