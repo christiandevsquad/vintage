@@ -17,14 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', function () {
-    $data = Product::all();
 
-    return view('admin.product.index')->withData($data);
+Route::get('/update', function () {
+    return view('admin.product.update_product');
 });
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/index', 'ProductController@index')->name('index');
 
 Route::resource('products', 'ProductController');

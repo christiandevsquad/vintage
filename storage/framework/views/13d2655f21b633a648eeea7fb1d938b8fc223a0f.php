@@ -28,16 +28,12 @@
 
     .sidenav {
         font-family: "Courier New", Courier, monospace;
-        position: fixed;
-        z-index: 1;
-        overflow-x: hidden;
-        padding: 8px 0;
     }
 
     .sidenav a {
         padding: 6px 8px 6px 16px;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 16px;
         color: #000000;
         display: block;
     }
