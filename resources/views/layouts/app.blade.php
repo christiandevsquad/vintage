@@ -142,11 +142,11 @@
                     </div>
 
                     <div class="col-10">
-                        @yield('editable_content')
+                        @yield('content')
                     </div>
                 </div>
             
-                
+            </div>
 
         </main>
     </div>

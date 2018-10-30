@@ -11,17 +11,13 @@
 |
 */
 
-use App\Models\Product;
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/update', function () {
     return view('admin.product.update_product');
 });
-
 
 Auth::routes();
 
