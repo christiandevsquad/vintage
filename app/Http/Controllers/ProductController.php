@@ -76,7 +76,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = \App\Models\Product::find($id);
-        return view('admin.product.update_product',compact('product','id'));    
+        return view('admin.product.update_product', compact('product','id'));    
     }
 
     /**
