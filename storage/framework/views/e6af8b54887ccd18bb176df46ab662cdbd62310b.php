@@ -1,4 +1,4 @@
-<?php $__env->startSection('editable_content'); ?>
+<?php $__env->startSection('content'); ?>
 
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2" role="group" aria-label="First group">

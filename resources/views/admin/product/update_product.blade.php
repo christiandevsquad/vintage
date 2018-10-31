@@ -48,7 +48,7 @@ float: none;
 }
 </style>
 
-<form action="{{ action('ProductController@store')}}" method="post" enctype="multipart/form-data">
+<form action="{{ action('ProductController@update', $product)}}" method="post" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-6">
 			<div class="form-group">
@@ -60,16 +60,16 @@ float: none;
 			</div>
 
 			<div class="form-group">
-				<input type="product-name" class="form-control" placeholder="Product Name">
+				<input type="product-name" class="form-control" name="Product name" value="{{ $product->name }}">
 			</div>
 			<div class="form-group">
-				<input type="product-name" class="form-control" placeholder="Product Subame">
+				<input type="product-name" class="form-control" name="Product subname" value="{{ $product->subName }}">
 			</div>
 			<div class="form-group">
-				<input type="price" class="form-control" placeholder="Price">
+				<input type="price" class="form-control" name="Price" value="{{ $product->price }}">
 			</div>
 			<div class="form-group">
-				<textarea class="form-control" rows="10" placeholder="Description"></textarea>
+				<textarea class="form-control" rows="10" name="Description"><?php echo $product->description ?></textarea>
 			</div> 
 		</div>
 
@@ -77,6 +77,8 @@ float: none;
 			<nav class="navbar-nav navbar-expand-sm justify-content-end">
 				<button class="btn btn-primary btn-sm ml-auto">PREVIEW</button>
 			</nav>
+
+			<img src="{{ $product->image }}" class="img-fluid" alt="Responsive image">
 
 			<div class="form-group col-md-4">
          		<input type="file" name="filename">    

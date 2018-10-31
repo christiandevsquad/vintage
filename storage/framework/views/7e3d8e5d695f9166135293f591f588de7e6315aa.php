@@ -1,9 +1,11 @@
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('under_nav'); ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><?php echo e(__('Register')); ?></div>
+
+                <img class="card-img-top mx-auto" src="images/vintage_m.png" style="width:50%;" alt="Card image cap">
 
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('register')); ?>">

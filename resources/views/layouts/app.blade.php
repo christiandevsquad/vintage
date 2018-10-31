@@ -129,6 +129,7 @@
         <main class="py-4">
             <div class="container">
                 <div class="row" style="padding-top:20px;">
+                    @section('under_nav')
                     <div class="col-2">
                         <div class="sidenav">
                             <h4 style="text-align:center">MENU</h4>
@@ -144,8 +145,8 @@
                     <div class="col-10">
                         @yield('content')
                     </div>
+                    @show
                 </div>
-            
             </div>
 
         </main>
