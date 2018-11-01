@@ -19,7 +19,7 @@ class ProductCollection extends Resource
             'subName' => $this->subName,
             'price' => $this->price,
             'description' => $this->description,
-            'image' => $this->image,
+            //'image' => $this->image,
             'tag' => $this->tag,
             'href' => [
                 'link' => route('products.show', $this->id)
