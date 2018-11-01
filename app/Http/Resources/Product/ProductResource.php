@@ -15,6 +15,10 @@ class ProductResource extends JsonResource
             'description' => $this->description,
             // 'image' => $this->image,
             'tag' => $this->tag,
+
+            'href' => [
+                'images' => route('images.index', $this->id)
+            ]
         ];
     }
 }
