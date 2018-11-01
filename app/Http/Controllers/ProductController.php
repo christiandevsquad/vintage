@@ -16,10 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
+        /* This part its work! However, I commented out to test the tutorial
         $data = Product::paginate(10);
 
         return view('admin.product.index', compact('data'));
-        // return ProductCollection::collection(Product::all());
+        */
+
+        return Product::all();
     }
 
     /**
