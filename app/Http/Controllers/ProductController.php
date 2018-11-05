@@ -22,7 +22,7 @@ class ProductController extends Controller
         return view('admin.product.index', compact('data'));
         */
 
-        return ProductCollection::collection( Product::all() );
+        return ProductCollection::collection( Product::paginate(10) );
     }
 
     /**
