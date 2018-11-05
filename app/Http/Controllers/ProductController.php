@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Http\Requests\ProductRequest;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index', 'show');
+    }
+
     public function index()
     {
         /* This part its work! However, I commented out to test the tutorial
@@ -41,8 +43,23 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
+        $product = new Product;
+
+        $product->name = $request->name;
+        $product->subName = $request->subName;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->tag = $request->tag;
+
+        $product->save();
+        
+        return response([
+            'data' => new ProductResource($product)
+        ], Response::HTTP_CREATED);
+
+    /*
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $name=time().$file->getClientOriginalName();
@@ -57,6 +74,8 @@ class ProductController extends Controller
         $product->filename = $name;
         $product->tag = $request->get('tag');
         $product->save();
+    */
+
     }
 
     /**
@@ -91,6 +110,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $product->update($request->all());
+
+        return response([
+            'data' => new ProductResource($product)
+        ], Response::HTTP_CREATED);
+    /*
         $product = \App\Product::find($product->id);
         $product->name = $request->get('name');
         $product->subName = $request->get('subName');
@@ -101,6 +126,7 @@ class ProductController extends Controller
         $product->save();
 
         return redirect('product');
+    */
     }
 
     /**
