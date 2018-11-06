@@ -14,8 +14,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductController extends Controller
 {
-    use SoftDeletes;
-
     public function __construct()
     {
         $this->middleware('auth:api')->except('index', 'show');
@@ -143,7 +141,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        //$product->softDeletes();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
