@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->text('description');
             $table->string('tag');
+            $table->integer('user_id')->unsigned()->index();
 
             $table->timestamps();
         });

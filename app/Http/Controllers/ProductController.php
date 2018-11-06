@@ -9,6 +9,9 @@ use App\Http\Resources\Product\ProductCollection;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use App\Exceptions\ProductNotBelongsToUser;
+use Auth;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -61,24 +64,6 @@ class ProductController extends Controller
         return response([
             'data' => new ProductResource($product)
         ], Response::HTTP_CREATED);
-
-    /*
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $name=time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/', $name);
-        }
-
-        $product = new \App\Product;
-        $product->name = $request->get('name');
-        $product->subName = $request->get('subName');
-        $product->price = $request->get('price');
-        $product->description = $request->get('description');
-        $product->filename = $name;
-        $product->tag = $request->get('tag');
-        $product->save();
-    */
-
     }
 
     /**
@@ -113,23 +98,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $this->ProductUserCheck($product);
+
         $product->update($request->all());
 
         return response([
             'data' => new ProductResource($product)
         ], Response::HTTP_CREATED);
-    /*
-        $product = \App\Product::find($product->id);
-        $product->name = $request->get('name');
-        $product->subName = $request->get('subName');
-        $product->price = $request->get('price');
-        $product->description = $request->get('description');
-        $product->filename = $name;
-        $product->tag = $request->get('tag');
-        $product->save();
-
-        return redirect('product');
-    */
     }
 
     /**
@@ -140,8 +115,18 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $this->ProductUserCheck($product);
+
         $product->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function ProductUserCheck($product) 
+    {
+        if (Auth::id() !== $product->user_id) {
+            throw new ProductNotBelongsToUser;
+        }
+    }
+
 }

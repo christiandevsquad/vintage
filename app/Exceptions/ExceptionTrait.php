@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 trait ExceptionTrait
 {
-    public function apiException($request,$e)
+    public function apiException($request, $e)
 	{
         if ($this->isModel($e)) {
             return $this->ModelResponse($e);
@@ -41,7 +41,7 @@ trait ExceptionTrait
 	protected function HttpResponse($e)
 	{
 		return response()->json([
-            'errors' => 'Incorect route'
+            'errors' => 'Incorrect route'
         ], Response::HTTP_NOT_FOUND);
 	}
 }

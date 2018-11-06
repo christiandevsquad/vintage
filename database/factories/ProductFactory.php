@@ -8,7 +8,9 @@ $factory->define(App\Models\Product::class, function (Faker $faker) {
         'subName' => $faker->word,
         'price' => $faker->numberBetween(100, 500),
         'description' => $faker->paragraph(5),
-        // 'image' => $faker->imageUrl($width=640, $height=480),
-        'tag' => $faker->word
+        'tag' => $faker->word,
+        'user_id' => function() {
+            return App\User::all()->random();
+        },
     ];
 });

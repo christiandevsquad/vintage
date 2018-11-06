@@ -3,17 +3,12 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpFoundation\Response;
 
 class Handler extends ExceptionHandler
 {
-    /**
-     * A list of the exception types that are not reported.
-     *
-     * @var array
-     */
+    use ExceptionTrait;
+
     protected $dontReport = [
         //
     ];
@@ -42,7 +37,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($request->expectsJson()) {
-            return $this->apiException($request,$exception);
+            return $this->apiException($request, $exception);
         }
 
         return parent::render($request, $exception);
