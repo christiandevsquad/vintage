@@ -6,82 +6,58 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Http\Resources\ImageResource;
 use Illuminate\Http\Request;
+use App\Http\Requests\ImageRequest;
 
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Product $product)
     {
         return ImageResource::collection($product->images);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ImageRequest $request, Product $product)
     {
-        //
+        $image = new Image( $request->all() );
+
+        $product->images()->save($image);
+
+        return response([
+            'data' => new ImageResource($image)
+        ], Response::HTTP_CREATED);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
     public function show(Image $image)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Image $image)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Image $image)
+    public function update(Request $request, Product $product, Image $image)
     {
-        //
+        // needs to adapt to the image upload
+        $image->update($request->all());
+
+        return response([
+            'data' => new ImageResource($image)
+        ], Response::HTTP_CREATED);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Image $image)
     {
-        //
+        // needs to adapt to the image upload
+        $image->delete();
+
+        return response([
+            'data' => new ImageResource($image)
+        ], Response::HTTP_NO_CONTENT);
     }
 }

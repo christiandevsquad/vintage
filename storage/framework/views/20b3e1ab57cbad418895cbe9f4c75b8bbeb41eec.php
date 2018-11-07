@@ -78,10 +78,6 @@ float: none;
 
 			<img src="<?php echo e($product->image); ?>" class="img-fluid" alt="Responsive image">
 
-			<div class="form-group col-md-4">
-         		<input type="file" name="filename">    
-         	</div>
-
 			<form action="" method="post" enctype="multipart/form-data">
 				<input type="file" name="files[]" multiple >
 				<input type="submit" name="submit" value="Upload">
