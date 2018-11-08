@@ -133,7 +133,7 @@
                     <div class="col-2">
                         <div class="sidenav">
                             <h4 style="text-align:center">MENU</h4>
-                            <a href="#">Products</a>
+                            <a href="{{ action('ProductController@index') }}">Products</a>
                             <a href="#">Orders</a>
                             <a href="#">Customers</a>
                             <a href="#">Analitycs</a>

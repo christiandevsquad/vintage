@@ -27,6 +27,7 @@
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
+
         <tbody>
         @foreach($data as $item)
             <tr class='item{{ $item->id }}'>
@@ -35,8 +36,8 @@
                 <td style="text-align:center">{{ $item->subName }}</td>
                 <td style="text-align:center">{{ $item->price }}</td>
                 <td style='text-align:center; white-space: nowrap'>
-                    <a href="{{action('ProductController@edit', $item->id)}}" class="edit-modal btn btn-success btn-xs" role="button">Edit</button>
-                    <a href="{{action('ProductController@destroy', $item->id)}}" class="delete-modal btn btn-danger btn-xs">Delete</button>
+                    <a href="{{ action('ProductController@show', $item->id) }}" class="delete-modal btn btn-success btn-xs">Edit</button>
+                    <a href="{{ action('ProductController@destroy', $item) }}" class="delete-modal btn btn-danger btn-xs">Delete</button>
                 </td>
             </tr>
         @endforeach

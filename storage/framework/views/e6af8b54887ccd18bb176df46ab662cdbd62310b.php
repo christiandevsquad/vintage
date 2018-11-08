@@ -25,6 +25,7 @@
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
+
         <tbody>
         <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr class='item<?php echo e($item->id); ?>'>
@@ -33,8 +34,8 @@
                 <td style="text-align:center"><?php echo e($item->subName); ?></td>
                 <td style="text-align:center"><?php echo e($item->price); ?></td>
                 <td style='text-align:center; white-space: nowrap'>
-                    <a href="<?php echo e(action('ProductController@edit', $item->id)); ?>" class="edit-modal btn btn-success btn-xs" role="button">Edit</button>
-                    <a href="<?php echo e(action('ProductController@destroy', $item->id)); ?>" class="delete-modal btn btn-danger btn-xs">Delete</button>
+                    <a href="<?php echo e(action('ProductController@show', $item->id)); ?>" class="delete-modal btn btn-success btn-xs">Edit</button>
+                    <a href="<?php echo e(action('ProductController@destroy', $item)); ?>" class="delete-modal btn btn-danger btn-xs">Delete</button>
                 </td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

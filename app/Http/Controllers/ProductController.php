@@ -24,31 +24,14 @@ class ProductController extends Controller
 
     public function index()
     {
-        /* This part its work! However, I commented out to test the tutorial
-        $data = Product::paginate(10);
+        // This part its work! However, I commented out to test the tutorial command
+        // $data = Product::paginate(10);
+
+        $data = ProductCollection::collection( Product::paginate(10) );
 
         return view('admin.product.index', compact('data'));
-        */
-
-        return ProductCollection::collection( Product::paginate(10) );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(ProductRequest $request)
     {
         $product = new Product;
@@ -72,9 +55,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        return new ProductResource($product);
+        // return new ProductResource($product);
+
+        $product = \App\Models\Product::find($id);
+
+        return view('admin.product.update_product', compact('product','id'));    
     }
 
     /**
@@ -83,22 +70,26 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+
+     /* previous version
     public function edit($id)
     {
         $product = \App\Models\Product::find($id);
+
+        return view('admin.product.update_product', compact('product','id'));    
+    }
+    */
+
+    public function edit(Product $id)
+    {
+        $product = \App\Models\Product::find($id);
+
         return view('admin.product.update_product', compact('product','id'));    
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
-        $this->ProductUserCheck($product);
+        // $this->ProductUserCheck($product);
 
         $product->update($request->all());
 
@@ -107,15 +98,9 @@ class ProductController extends Controller
         ], Response::HTTP_CREATED);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
-        $this->ProductUserCheck($product);
+        //$this->ProductUserCheck($product);
 
         $product->delete();
 

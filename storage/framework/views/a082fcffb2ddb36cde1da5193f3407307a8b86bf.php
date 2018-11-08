@@ -28,6 +28,7 @@
 
     .sidenav {
         font-family: "Courier New", Courier, monospace;
+        width: 130px;
         position: fixed;
         z-index: 1;
         overflow-x: hidden;
@@ -43,7 +44,7 @@
     }
 
     .sidenav a:hover {
-        color: #191970;
+        color: #064579;
     }
     
     @media  screen and (max-height: 450px) {
@@ -133,16 +134,15 @@
 
         <main class="py-4">
             <div class="container">
-                <div class="row" style="padding-top:20px;">
+                <div class="row" style="padding-top:30px;">
                     <div class="col-2">
-                        <div class="sidenav">
-                            <h4 style="text-align:center">MENU</h4>
-                            <a href="#">Products</a>
-                            <a href="#">Orders</a>
-                            <a href="#">Customers</a>
-                            <a href="#">Analitycs</a>
-                            <a href="#">Discounts</a>
-                            <a href="#">Apps</a>
+                         
+
+                        <div class="sidenav flex-column">
+                            <a href="#">About</a>
+                            <a href="#">Services</a>
+                            <a href="#">Clients</a>
+                            <a href="#">Contact</a>
                         </div>    
                     </div>
 

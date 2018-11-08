@@ -15,13 +15,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/update', function () {
-    return view('admin.product.update_product');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/index', 'ProductController@index')->name('index');
 
-Route::resource('products', 'ProductController');
+// Previous route defined
+// Route::resource('products', 'ProductController');

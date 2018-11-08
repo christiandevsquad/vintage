@@ -46,7 +46,7 @@ float: none;
 }
 </style>
 
-<form action="<?php echo e(action('ProductController@update', $product)); ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo e(action('ProductController@update', $product)); ?>" method="put" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-6">
 			<div class="form-group">
@@ -76,14 +76,16 @@ float: none;
 				<button class="btn btn-primary btn-sm ml-auto">PREVIEW</button>
 			</nav>
 
-			<img src="<?php echo e($product->image); ?>" class="img-fluid" alt="Responsive image">
+			<input type="product-name" class="form-control" name="Product name" value="<?php echo e($product->tag); ?>">
+			<!-- 			
+
+			<img src="<?php echo e($product->product_image); ?>" class="img-fluid" alt="Responsive image">
 
 			<form action="" method="post" enctype="multipart/form-data">
 				<input type="file" name="files[]" multiple >
 				<input type="submit" name="submit" value="Upload">
 			</form>
 
-			<!-- 			
 				<div class="file-loading">
 					<input id="input-ficons-3" name="input-ficons-3[]" multiple type="file">
 				</div>
